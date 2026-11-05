@@ -1,0 +1,48 @@
+/* ===============================================
+   CAMPAIGN CASE STUDY PAGES (campaign.css)
+   Used by: campaign-kerrygold, -supergoop, -crockpot, -owala
+   (.campaign-grid 3-up lives in style.css — shared with Other page)
+   =============================================== */
+
+/* tighter section spacing used on the Kerrygold page */
+.section-campaign {
+  padding-top: 0rem;
+  padding-bottom: 3rem;
+}
+
+/* 2-up image grid (Crockpot) */
+.campaign-grid1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* full-width campaign video (Kerrygold) */
+.media-block-video {
+  background: #c285a3;
+  border: 1px solid #2b1e23;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ---------- CREDITS ----------
+   NEW: .credits-list / .credits-row had no styles before.
+   Basic layout so "AD  Alana Harvey" sits on one line —
+   tweak freely. */
+.credits-list { margin-top: 0.5rem; }
+
+.credits-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0rem;
+  padding: 0rem 0;
+}
+
+.credits-row .h3 { min-width: 3rem; color: #dd6a2b; }
+
+@media (max-width: 700px) {
+  .campaign-grid1 { grid-template-columns: 1fr; gap: 1rem; }
+}

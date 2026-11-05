@@ -1,0 +1,149 @@
+/* ===============================================
+   index PAGE (index.css) — loads after style.css
+   Hero split layout, name + star, animated blob.
+   =============================================== */
+
+/* ---------- HERO (name left, blob right) ---------- */
+.hero--split {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+}
+
+.hero-copy { flex: 1 1 48%; }
+
+.eyebrow-index {
+  font-size: 1.2rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.h2-index { text-align: left; }
+.h2-index a:hover { color: #dd6a2b; }
+
+/* row holding the name + small star beside it */
+.name-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+/* star sitting inline to the right of the name */
+.name-star {
+  width: 7rem;
+  height: 7rem;
+  vertical-align: middle;
+  transform: translateY(-0.1em);
+}
+
+.hero-title--compact {
+  font-size: 8.5rem;
+  animation: redaction-cycle 2s steps(1, end) infinite; /* keyframes in style.css */
+}
+
+.hero-blob {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+  .name-star { width: 3.5rem; height: 3.5rem; }
+  .hero-title--compact { font-size: 3.5rem; }
+  .hero-blob { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title--compact {
+    animation: none;
+    font-family: "redaction-50", "Times New Roman", serif;
+  }
+}
+
+/* ---------- BLOB SHAPES ----------
+   Two overlapping shapes: .blob-back (bottom layer,
+   shifts color) and .blob-front (top layer, holds photo).
+   Nudge the top/right/bottom/left values to resize or
+   reposition either blob. */
+.blob-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  aspect-ratio: 1;
+}
+
+.blob-back,
+.blob-front {
+  background: linear-gradient(120deg, #9c3085, #dd6a2b, #f0a868, #c285a3, #9c3085);
+  background-size: 300% 300%;
+}
+
+.blob-back {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  bottom: 3%;
+  left: 3%;
+  overflow: hidden;
+  animation: blob-morph 14s ease-in-out infinite,
+             blob-float 7s ease-in-out infinite,
+             blob-shift 11s ease-in-out infinite;
+}
+
+.blob-front {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  bottom: 8%;
+  left: 8%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c285a3; /* solid fill — this is where the photo sits */
+  animation: blob-morph-2 11s ease-in-out infinite,
+             blob-float 8s ease-in-out infinite 1s;
+}
+
+.blob-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blob-placeholder {
+  font-family: "redaction-20", "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: #2b1e23;
+  opacity: 0.6;
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; }
+  25%      { border-radius: 58% 42% 35% 65% / 60% 55% 45% 40%; }
+  50%      { border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%; }
+  75%      { border-radius: 35% 65% 55% 45% / 40% 60% 40% 60%; }
+}
+
+@keyframes blob-morph-2 {
+  0%, 100% { border-radius: 60% 40% 45% 55% / 50% 60% 40% 50%; }
+  25%      { border-radius: 45% 55% 60% 40% / 40% 50% 50% 60%; }
+  50%      { border-radius: 55% 45% 50% 50% / 60% 40% 55% 45%; }
+  75%      { border-radius: 40% 60% 55% 45% / 50% 55% 45% 50%; }
+}
+
+@keyframes blob-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.1rem); }
+}
+
+@keyframes blob-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-back, .blob-front { animation: none; }
+}
