@@ -1,0 +1,108 @@
+/* ===============================================
+   WORK LISTING PAGES (work.css) — loads after style.css
+   Used by: work.html, client-work.html, other.html
+   Section heading + tabs, project cards, hover effect.
+   =============================================== */
+
+/* ---------- SECTION HEAD + TABS ---------- */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* clickable category tabs (Campaigns / Client Work / Other) */
+.work-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.work-tab {
+  display: inline-block;
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  padding: 0.4rem 1rem;
+  border: 1px solid #9c3085;
+  color: #9c3085;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.work-tab:hover { background: #9c3085; color: #fbf7ef; }
+
+.work-tab--active {
+  background: #9c3085;
+  color: #fbf7ef;
+}
+
+/* ---------- PROJECT CARDS ---------- */
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card { flex: 1 1 calc(50% - 1rem); }
+
+@media (max-width: 700px) {
+  .project-card { flex: 1 1 100%; }
+}
+
+.project-card .media-block { margin-bottom: 1rem; }
+.project-card .h3 { color: #dd6a2b; margin-bottom: 0.25rem; }
+
+.project-card h4 {
+  font-family: "redaction-20", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card a:hover {
+  font-family: "redaction-35", "Times New Roman", serif;
+  color: #9c3085;
+}
+
+/* un-cropped image sitting directly in a card (Other page) */
+.media-block-2 { border: 1px solid #2b1e23; }
+
+/* ---------- HOVER EFFECT ----------
+   Gentle zoom + dark tint on clickable card images. */
+.media-block-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card .media-block { position: relative; }
+
+.project-card .media-block img { transition: transform 0.4s ease; }
+
+/* NOTE: was ".media-block-link a:hover img", which could never match
+   (the link is the PARENT of .media-block-link). Fixed so the zoom works. */
+.project-card .project-link:hover .media-block-link img {
+  transform: scale(1.08);
+}
+
+.project-card .media-block-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 30, 35, 0.5);
+  transition: background 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.project-card .project-link:hover .media-block-link::after,
+.project-card .media-block:hover::after {
+  background: rgba(43, 30, 35, 0);
+}

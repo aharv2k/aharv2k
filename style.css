@@ -1,0 +1,404 @@
+/* ===============================================
+   ALANA HARVEY — UNIVERSAL STYLESHEET (style.css)
+   Loaded on EVERY page. Only things that appear on
+   more than one page live here. Page-specific styles:
+
+   index.css      → index.html
+   about.css     → about.html
+   work.css      → work.html, client-work.html, other.html
+   campaign.css  → campaign-*.html
+   artwork.css   → artwork.html
+
+   PALETTE REFERENCE (not used by the CSS):
+   Ink    #2b1e23   — text, borders, footer
+   Berry  #9c3085   — accent, links, hover
+   Orange #dd6a2b   — buttons, CTAs
+   Mauve  #c285a3   — image blocks, tags, star
+   Peach  #f0a868   — soft fills, blob
+   Cream  #fbf7ef   — page background
+
+   FONTS: Redaction 20/35/50/70, New Science Light and
+   Inter Variable load from the Adobe Fonts (Typekit) kit —
+   keep that <link> tag above this stylesheet.
+   =============================================== */
+
+
+/* ---------- 1. RESET ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #fbf7ef;
+  color: #2b1e23;
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img   { max-width: 100%; display: block; }
+video { max-width: 100%; display: block; }
+a     { color: inherit; text-decoration: none; }
+
+
+/* ---------- 2. TYPOGRAPHY ---------- */
+h1, .h1 {
+  font-family: "redaction-35", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 5rem;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #2b1e23;
+}
+
+h2, .h2 {
+  font-family: "new-science", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 0.01em;
+  color: #2b1e23;
+  text-align: center;
+}
+
+h3, .h3 {
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2b1e23;
+}
+
+p, .body-copy {
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  max-width: 60ch;
+}
+
+.body-copy--reading {
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1.05rem;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* small tracked-out label that sits above an h2 */
+.eyebrow {
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  color: #dd6a2b;
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.eyebrow-campaigns { text-align: center; }
+
+/* centered h2 under a page title (used on work / client work / campaign pages) */
+.h2-centered { text-align: center; }
+
+/* smaller screens: scale the two display sizes down a notch */
+@media (max-width: 700px) {
+  h1, .h1 { font-size: 3rem; }
+  h2, .h2 { font-size: 1.5rem; }
+}
+
+
+/* ---------- 3. LAYOUT SHELL ---------- */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* thin ink rule above + below a section, used for the CTA strip */
+.section--bordered {
+  border-top: 1px solid #2b1e23;
+  border-bottom: 1px solid #2b1e23;
+}
+
+.hero { position: relative; }
+.hero .h2 { margin-top: 0.5rem; }
+
+/* page header used at the top of Work / Client Work / Other / campaigns */
+.page-title {
+  font-size: 5.5rem;
+  font-family: "redaction-35", "Times New Roman", serif;
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+@media (max-width: 700px) {
+  .page-title {
+    font-size: 2.5rem;
+    font-family: "redaction-20", "Times New Roman", serif;
+  }
+}
+
+/* "← Back" link used on campaign pages and the artwork page */
+.back-link {
+  display: inline-block;
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+.back-link:hover { color: #9c3085; }
+
+
+/* ---------- 4. TOP COLOR BAR ---------- */
+.color-bar {
+  display: flex;
+  width: 100%;
+  height: 10px;
+}
+
+.color-bar span { display: block; }
+.color-bar span:nth-child(1) { flex: 18; background: #2b1e23; }
+.color-bar span:nth-child(2) { flex: 24; background: #9c3085; }
+.color-bar span:nth-child(3) { flex: 22; background: #c285a3; }
+.color-bar span:nth-child(4) { flex: 22; background: #dd6a2b; }
+.color-bar span:nth-child(5) { flex: 14; background: #f0a868; }
+
+
+/* ---------- 5. NAV ---------- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #2b1e23;
+}
+
+.nav a {
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  margin-left: 2rem;
+}
+
+.nav a:hover {
+  color: #9c3085;
+  text-align: left;
+}
+
+
+/* ---------- 6. STAR ACCENT ----------
+   Base .star is the default (large) size — add a size
+   class (--sm / --md) and a color class (--berry etc)
+   together, e.g. class="star star--sm star--berry" */
+.star {
+  width: 6rem;
+  height: 6rem;
+  background: #c285a3;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  display: inline-block;
+}
+
+.star--sm { width: 2rem; height: 2rem; }
+.star--md { width: 3rem; height: 3rem; }
+
+.star--berry  { background: #9c3085; }
+.star--orange { background: #dd6a2b; }
+.star--peach  { background: #f0a868; }
+.star--mauve  { background: #c285a3; }
+
+
+/* ---------- 7. BUTTONS / TAGS ---------- */
+.btn {
+  display: inline-block;
+  font-family: "redaction-50", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  border: 1px solid #2b1e23;
+  background: #dd6a2b;
+  color: #fbf7ef;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  color: #fbf7ef;
+  font-size: 1.5rem;
+  background-color: #9c3085;
+  font-family: "redaction-70", "Times New Roman", serif;
+}
+
+/* extra space above a button that follows text */
+.btn--top-gap { margin-top: 2rem; }
+
+.tag {
+  display: inline-block;
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #9c3085;
+  color: #9c3085;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+
+/* ---------- 8. IMAGE BLOCKS (shared) ---------- */
+.media-block {
+  background: #c285a3;
+  border: 1px solid #2b1e23;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.media-block img { border: 1px solid #2b1e23; }
+
+/* taller ratio, optional portrait variant */
+.media-block--portrait { aspect-ratio: 3 / 4; }
+
+/* 3-up image grid — used on campaign pages and on the "Other" page */
+.campaign-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+.campaign-grid-2 {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 3.5rem;
+ margin-top: 0rem;
+ margin-bottom:5rem;
+ margin-left: 6rem;
+ margin-right: 6rem;
+}
+
+.campaign-grid-3 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 2rem;
+ 	margin-bottom:3rem;
+ 	margin-left: 3rem;
+ 	margin-right: 3rem;
+}
+
+/* ---------- 9. CTA STRIP (star + line + button) ---------- */
+.cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.cta-row p { max-width: 50ch; }
+
+
+/* ---------- 10. HEADING ANIMATION ----------
+   Redaction 20 → 35 → 50 → 70 → reverse.
+   Keyframes live here so any page can use them. */
+@keyframes redaction-cycle {
+  0%, 100% { font-family: "redaction-20", "Times New Roman", serif; }
+  16.67%   { font-family: "redaction-35", "Times New Roman", serif; }
+  33.33%   { font-family: "redaction-50", "Times New Roman", serif; }
+  50%      { font-family: "redaction-70", "Times New Roman", serif; }
+  66.67%   { font-family: "redaction-50", "Times New Roman", serif; }
+  83.33%   { font-family: "redaction-35", "Times New Roman", serif; }
+}
+
+/* index.css also applies this to .hero-title--compact */
+.page-title {
+  animation: redaction-cycle 2s steps(1, end) infinite;
+}
+
+/* Accessibility: stop animation for users who request reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-title {
+    animation: none;
+    font-family: "redaction-50", "Times New Roman", serif;
+  }
+}
+
+
+/* ---------- 11. FOOTER ---------- */
+footer {
+  border-top: 1px solid #2b1e23;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-family: "inter-variable", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+
+/* ---------- 12. MOBILE (shared pieces) ---------- */
+@media (max-width: 700px) {
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nav h3 {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav h3 a { margin-left: 0; }
+
+  .nav > div {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .nav > div a { margin-left: 0; }
+
+  .campaign-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  .cta-row .star { transform: rotate(15deg); }
+
+  .cta-row p {
+    font-family: "new-science", Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-transform: none;
+  }
+}
+.section-campaign {
+}
+.campaign-grid-1 {
+}
